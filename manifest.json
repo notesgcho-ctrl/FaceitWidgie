@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Faceit Stats → Steam Artwork",
+  "version": "0.1.0",
+  "description": "Generate a Faceit stat card and drop it into Steam's artwork upload form. 100% client-side; never touches Steam credentials.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Faceit Stats → Steam Artwork"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://open.faceit.com/*",
+    "https://distribution.faceit-cdn.net/*",
+    "https://assets.faceit-cdn.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://steamcommunity.com/sharedfiles/edititem/*"],
+      "js": ["content-steam.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

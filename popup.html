@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Faceit Stats → Steam Artwork</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Faceit → Steam Artwork</h1>
+
+  <form id="form">
+    <input id="query" type="text" placeholder="Faceit nickname, player ID or profile URL" autocomplete="off" autofocus>
+    <div class="row">
+      <select id="mode" aria-label="Steam showcase type">
+        <option value="featured">Featured Artwork (630px)</option>
+        <option value="showcase">Artwork Showcase (506 + 100px)</option>
+      </select>
+      <button id="generate" type="submit">Generate</button>
+    </div>
+  </form>
+
+  <p id="status" role="status"></p>
+
+  <div id="preview" hidden>
+    <canvas id="canvas"></canvas>
+    <div id="sidewrap" hidden><span>Side image</span><canvas id="sidecanvas"></canvas></div>
+    <div class="row">
+      <button id="download" type="button" class="secondary">Download PNG</button>
+      <button id="send" type="button">Send to Steam</button>
+    </div>
+    <p class="hint">Opens Steam's artwork upload page in a new tab and fills the file picker. You stay logged in there and press Steam's own Upload button. This extension never sees your Steam credentials.</p>
+  </div>
+
+  <details id="settings">
+    <summary>Settings</summary>
+    <label for="apikey">Your Faceit Data API key (optional if one is bundled)</label>
+    <input id="apikey" type="password" placeholder="Server-side key from developers.faceit.com" autocomplete="off">
+    <button id="savekey" type="button" class="secondary">Save key</button>
+  </details>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
